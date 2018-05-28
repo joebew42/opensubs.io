@@ -18,6 +18,7 @@ defmodule Subs.Umbrella.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run apps/repository/priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create", "ecto.migrate", "test"]
     ]
   end
 end

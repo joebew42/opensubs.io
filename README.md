@@ -18,9 +18,12 @@ Things I wrote about the project:
 - `cd apps/subs_web/frontend && node_modules/.bin/webpack --config webpack.config.js`, to build the frontend manually
 
 #### Running tests
-- `brew install chromedriver`, to run acceptance tests
-- `mix test`, to un all tests
+- `brew install chromedriver`, to run acceptance tests (based on the operating system you are using you may have to install `chromedriver` through other package manager)
+
+- `export MIX_ENV=test`
+- `mix test`, to run all tests
 - `mix test --only acceptance`, to run only acceptance tests
+- `mix test --exclude acceptance`, to exclude acceptance tests
 
 ### MVP
 #### Backend API
