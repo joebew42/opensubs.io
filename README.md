@@ -16,6 +16,8 @@ Things I wrote about the project:
 3. `mix phx.server`, to run the server, will also build the frontend
 
 - `cd apps/subs_web/frontend && node_modules/.bin/webpack --config webpack.config.js`, to build the frontend manually
+- to login to the application you can use this user `user@opensubs.io` with  password: `password`
+
 
 #### Running tests
 - `brew install chromedriver`, to run acceptance tests (based on the operating system you are using you may have to install `chromedriver` through other package manager)
