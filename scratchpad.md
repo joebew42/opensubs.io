@@ -4,7 +4,7 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 
 ## DOING
 
-- Write an acceptance test to document that as a logged user I can create a new subscription by specifing its category
+- As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
 
 ## TODO
 
@@ -25,6 +25,7 @@ warning: trailing commas are not allowed inside function/macro call arguments
 
 ## DONE
 
+- Write an acceptance test to document that as a logged user I can create a new subscription by specifing its category
 - Add a new field `category` to `subscriptions`
 - Try to play with the application
 - Run the application
