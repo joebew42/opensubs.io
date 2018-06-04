@@ -18,6 +18,7 @@ const remoteData = {
   service_code: '',
   type: null,
   type_description: null,
+  category: null,
 }
 
 const SubscriptionRecord = Record(remoteData)

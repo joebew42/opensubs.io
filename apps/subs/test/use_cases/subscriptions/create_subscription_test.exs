@@ -30,6 +30,13 @@ defmodule Subs.Test.UseCases.Subscriptions.CreateSubscriptionTest do
     assert subscription.user_id == user.id
   end
 
+  test "creates subscription with a category", %{user: user} do
+    params = string_params_for(:subscription, category: "travel")
+
+    assert {:ok, %{subscription: subscription}} = CreateSubscription.perform(user, params)
+    assert subscription.category == "travel"
+  end
+
   test "consolidates amount as integer value", %{user: user} do
     params = string_params_for(:subscription, amount: 7.99)
 

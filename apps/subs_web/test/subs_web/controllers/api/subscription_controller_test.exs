@@ -263,7 +263,8 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
                "next_bill_date" => "2017-08-06T09:00:00Z",
                "service_code" => nil,
                "type" => nil,
-               "type_description" => nil
+               "type_description" => nil,
+               "category" => nil,
              }
     end
 
@@ -349,6 +350,25 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
 
       assert data["data"]["type"] == "card"
       assert data["data"]["type_description"] == "Monzo"
+    end
+
+    test "creates subscription with category", %{conn: conn} do
+      conn =
+        post(
+          conn,
+          api_subscription_path(conn, :create),
+          subscription: %{
+            "name" => "Custom Service",
+            "amount" => "7.99",
+            "amount_currency" => "GBP",
+            "cycle" => "monthly",
+            "category" => "travel",
+          }
+        )
+
+      assert data = json_response(conn, 201)
+
+      assert data["data"]["category"] == "travel"
     end
   end
 

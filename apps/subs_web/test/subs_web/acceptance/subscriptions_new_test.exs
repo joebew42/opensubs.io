@@ -114,4 +114,19 @@ defmodule SubsWeb.Test.Acceptance.SubscriptionsNewTest do
     |> visit("/payments")
     |> assert_has(css(".SubscriptionListItem--type-description[title='HSBC']", count: 1))
   end
+
+  @tag :acceptance
+  test "creates subscription with a category and renders it on the page", %{session: session} do
+    session
+    |> assert_signup_and_login_user()
+    |> visit("/payments/new")
+    |> assert_has(css("#subscription-form"))
+    |> fill_in(css("#subscription-form .subscription-name"), with: "Dropbox")
+    |> fill_in(css("#subscription-form .subscription-amount"), with: "1")
+    |> fill_in(css("#subscription-form .subscription-cycle"), with: "yearly")
+    |> fill_in(css("#subscription-form .subscription-category"), with: "music")
+    |> click(css("#subscription-form button[type=\"submit\"]"))
+    |> assert_has(css("a", text: "New payment"))
+    |> assert_has(css(".SubscriptionListItem--name", text: "Dropbox"))
+  end
 end

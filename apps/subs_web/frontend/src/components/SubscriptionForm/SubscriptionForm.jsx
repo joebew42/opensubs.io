@@ -129,6 +129,16 @@ const SubscriptionForm = ({ subscription, services, onClick, onChange, remoteCal
             onChange={event => handleChange(event, 'type_description')}
           />
         }
+        <div className="b dark-gray mb2 mt3">
+          Category
+        </div>
+        <InputText
+          name="category"
+          placeholder="Category"
+          className="subscription-category mt2 w-70"
+          value={subscription.category}
+          onChange={event => handleChange(event, 'category')}
+        />
       </div>
     )
   }

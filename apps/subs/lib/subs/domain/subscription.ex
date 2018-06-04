@@ -24,6 +24,7 @@ defmodule Subs.Subscription do
     field :service_code, :string
     field :type, :string
     field :type_description, :string
+    field :category, :string
 
     belongs_to :user, User
 
@@ -44,6 +45,7 @@ defmodule Subs.Subscription do
     first_bill_date
     type
     type_description
+    category
   )a
 
   @required_updated_fields ~w(

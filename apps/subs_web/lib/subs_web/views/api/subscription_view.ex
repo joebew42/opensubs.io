@@ -63,6 +63,7 @@ defmodule SubsWeb.Api.SubscriptionView do
       service_code: subscription.service_code,
       type: subscription.type,
       type_description: subscription.type_description,
+      category: subscription.category,
     }
   end
 
