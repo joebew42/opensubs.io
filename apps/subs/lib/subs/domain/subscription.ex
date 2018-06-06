@@ -24,7 +24,7 @@ defmodule Subs.Subscription do
     field :service_code, :string
     field :type, :string
     field :type_description, :string
-    field :category, :string
+    field :category, :string, default: "other"
 
     belongs_to :user, User
 
@@ -67,6 +67,7 @@ defmodule Subs.Subscription do
     archived
     type
     type_description
+    category
   )
 
   @currency_codes Money.currency_codes()
