@@ -4,16 +4,18 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 
 ## DOING
 
+- `Other` should be the default value of category for all the new payments.
 
 ## TODO
 
-- Other will be the default value of category for all the new payments.
 - The category is mandatory and cannot be blank.
 - As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
 - Error: `SubsServices.get_services/0` is undefined
 - Why we run an empty seed `apps/repository/priv/repo/seeds.exs` when we execute the `mix ecto.setup` task?
 - during the `mix deps.get` we get a `quantum 2.2.1 RETIRED! (invalid) Problem with Daylight Saving Time`
 - Fix warnings:
+warning: variable "status" is unused
+  lib/subs/domain/subscription_repo.ex:40
 warning: trailing commas are not allowed inside function/macro call arguments
   test/use_cases/subscriptions/update_subscription_test.exs:58
 warning: trailing commas are not allowed inside function/macro call arguments

@@ -40,6 +40,14 @@ defmodule Subs.Test.UseCases.Subscriptions.UpdateSubscriptionTest do
     assert subscription.amount == 150
   end
 
+  test "updates subscription with a category", %{user: user} do
+    subscription = insert(:complete_subscription, user_id: user.id)
+    {:ok, %{subscription: subscription}} =
+      UpdateSubscription.perform(user, subscription.id, %{"category" => "travel"})
+
+    assert subscription.category == "travel"
+  end
+
   test "archives subscription and sets archived_at", %{user: user} do
     subscription = insert(:complete_subscription, user_id: user.id)
     {:ok, %{subscription: subscription}} =
