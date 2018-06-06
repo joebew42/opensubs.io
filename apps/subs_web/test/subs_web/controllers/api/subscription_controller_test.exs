@@ -50,6 +50,23 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
     end
   end
 
+  describe "GET /api/subscriptions/summary" do
+    setup %{conn: conn} do
+      user = insert(:user)
+      conn = ApiHelpers.put_authorization_header(conn, user)
+
+      [conn: conn, user: user]
+    end
+
+    test "returns 200 with no summary", %{conn: conn} do
+      conn = get(conn, api_subscription_path(conn, :summary))
+
+      assert %{"data" => summary} = json_response(conn, 200)
+      assert %{"currency" => "GBP", "currency_symbol" => "£", "spendings" => spendings} = summary
+      assert spendings == []
+    end
+  end
+
   describe "GET /api/subscriptions" do
     setup %{conn: conn} do
       user = insert(:user)
@@ -264,7 +281,7 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
                "service_code" => nil,
                "type" => nil,
                "type_description" => nil,
-               "category" => nil,
+               "category" => "other",
              }
     end
 

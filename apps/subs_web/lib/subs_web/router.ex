@@ -36,7 +36,9 @@ defmodule SubsWeb.Router do
   scope "/api", SubsWeb, as: :api do
     pipe_through [:api, :authenticated]
 
+    get "/subscriptions/summary", Api.SubscriptionController, :summary
     resources "/subscriptions", Api.SubscriptionController, only: [:index, :create, :show, :update]
+
     resources "/services", Api.ServiceController, only: [:index]
 
     scope "/users", as: :user do

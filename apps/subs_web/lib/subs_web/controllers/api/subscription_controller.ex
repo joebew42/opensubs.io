@@ -92,4 +92,18 @@ defmodule SubsWeb.Api.SubscriptionController do
     |> put_status(:bad_request)
     |> render(ErrorView, :"400", message: "Missing subscription params")
   end
+
+  def summary(conn, _) do
+    summary = %{
+      data: %{
+        currency: "GBP",
+        currency_symbol: "£",
+        spendings: []
+      }
+    }
+
+    conn
+    |> put_status(:ok)
+    |> json(summary)
+  end
 end
