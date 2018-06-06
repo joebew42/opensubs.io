@@ -3,7 +3,7 @@ defmodule Repository.Repo.Migrations.AddCategoryToSubscriptions do
 
   def change do
     alter table(:subscriptions) do
-      add :category, :string
+      add :category, :string, default: "uncategorized"
     end
   end
 end

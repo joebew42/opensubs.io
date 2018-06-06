@@ -4,10 +4,12 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 
 ## DOING
 
-- As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
 
 ## TODO
 
+- Other will be the default value of category for all the new payments.
+- The category is mandatory and cannot be blank.
+- As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
 - Error: `SubsServices.get_services/0` is undefined
 - Why we run an empty seed `apps/repository/priv/repo/seeds.exs` when we execute the `mix ecto.setup` task?
 - during the `mix deps.get` we get a `quantum 2.2.1 RETIRED! (invalid) Problem with Daylight Saving Time`
@@ -25,6 +27,7 @@ warning: trailing commas are not allowed inside function/macro call arguments
 
 ## DONE
 
+- All the payments - prior to the release of this feature - will be migrated to a `Uncategorized`category (we translate this by adding the value uncategorized in the category field?).
 - Write an acceptance test to document that as a logged user I can create a new subscription by specifing its category
 - Add a new field `category` to `subscriptions`
 - Try to play with the application
