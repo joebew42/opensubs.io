@@ -94,13 +94,33 @@ defmodule SubsWeb.Api.SubscriptionController do
   end
 
   def summary(conn, _) do
-    summary = %{
-      data: %{
-        currency: "GBP",
-        currency_symbol: "£",
-        spendings: []
-      }
-    }
+    current_user = UserHelper.current_user(conn)
+
+    all_subscriptions = Subs.SubscriptionRepo.get_user_subscriptions(current_user, %{})
+
+    summary = case all_subscriptions do
+      [] ->
+        %{
+          data: %{
+            currency: "GBP",
+            currency_symbol: "£",
+            total: 0.00,
+            spendings: []
+          }
+        }
+      subscriptions when length(subscriptions) > 0 ->
+        %{
+          data: %{
+            currency: "GBP",
+            currency_symbol: "£",
+            total: 30.00,
+            spendings: [
+              %{category: "travel", amount: 20.00},
+              %{category: "other",  amount: 10.00}
+            ]
+          }
+        }
+    end
 
     conn
     |> put_status(:ok)

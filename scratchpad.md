@@ -5,7 +5,8 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 ## DOING
 
 - As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
-
+  - How the `amount` field is handled (it is expressed in cents or other?)
+  - Extract the logic to generate the spendings summary from `subscription_controller` to `[generate|view]_spendings_summary` use case
 
 HTTP GET /api/subscriptions/summary
 
@@ -56,6 +57,7 @@ warning: trailing commas are not allowed inside function/macro call arguments
 ## QUESTIONS
 
 - The `subs_web` tests are quite slow, is there some way to make them faster?
+  - Maybe the `frontend` could be moved out from the application `subs_web`?
 - It seems that is difficult to run tests of a single application. For example, when I try to run only the tests for the `subs` application, I get this error:
 
 ```

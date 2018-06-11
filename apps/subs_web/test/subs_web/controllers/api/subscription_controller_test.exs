@@ -62,8 +62,23 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
       conn = get(conn, api_subscription_path(conn, :summary))
 
       assert %{"data" => summary} = json_response(conn, 200)
-      assert %{"currency" => "GBP", "currency_symbol" => "£", "spendings" => spendings} = summary
+      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => 0.00, "spendings" => spendings} = summary
       assert spendings == []
+    end
+
+    test "returns 200 with spendings summary", %{conn: conn, user: user} do
+      insert(:complete_subscription, category: "travel", amount: 1000, user_id: user.id)
+      insert(:complete_subscription, category: "travel", amount: 1000, user_id: user.id)
+      insert(:complete_subscription, category: "other",  amount: 1000, user_id: user.id)
+
+      conn = get(conn, api_subscription_path(conn, :summary))
+
+      assert %{"data" => summary} = json_response(conn, 200)
+      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => 30.00, "spendings" => spendings} = summary
+      assert spendings == [
+        %{"category" => "travel", "amount" => 20.00},
+        %{"category" => "other", "amount" => 10.00}
+      ]
     end
   end
 
