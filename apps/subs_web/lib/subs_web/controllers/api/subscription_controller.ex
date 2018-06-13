@@ -5,7 +5,8 @@ defmodule SubsWeb.Api.SubscriptionController do
     CreateSubscription,
     UpdateSubscription,
     FindUserSubscription,
-    FindUserSubscriptions
+    FindUserSubscriptions,
+    ViewSpendingsSummary
   }
 
   alias SubsWeb.Helpers.UserHelper
@@ -96,31 +97,7 @@ defmodule SubsWeb.Api.SubscriptionController do
   def summary(conn, _) do
     current_user = UserHelper.current_user(conn)
 
-    all_subscriptions = Subs.SubscriptionRepo.get_user_subscriptions(current_user, %{})
-
-    summary = case all_subscriptions do
-      [] ->
-        %{
-          data: %{
-            currency: "GBP",
-            currency_symbol: "£",
-            total: 0.00,
-            spendings: []
-          }
-        }
-      subscriptions when length(subscriptions) > 0 ->
-        %{
-          data: %{
-            currency: "GBP",
-            currency_symbol: "£",
-            total: 30.00,
-            spendings: [
-              %{category: "travel", amount: 20.00},
-              %{category: "other",  amount: 10.00}
-            ]
-          }
-        }
-    end
+    summary = ViewSpendingsSummary.perform(current_user)
 
     conn
     |> put_status(:ok)

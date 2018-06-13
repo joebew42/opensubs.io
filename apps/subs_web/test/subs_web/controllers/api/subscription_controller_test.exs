@@ -62,7 +62,7 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
       conn = get(conn, api_subscription_path(conn, :summary))
 
       assert %{"data" => summary} = json_response(conn, 200)
-      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => 0.00, "spendings" => spendings} = summary
+      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => "0.00", "spendings" => spendings} = summary
       assert spendings == []
     end
 
@@ -74,10 +74,10 @@ defmodule SubsWeb.Test.Controllers.SubscriptionControllerTest do
       conn = get(conn, api_subscription_path(conn, :summary))
 
       assert %{"data" => summary} = json_response(conn, 200)
-      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => 30.00, "spendings" => spendings} = summary
+      assert %{"currency" => "GBP", "currency_symbol" => "£", "total" => "30.00", "spendings" => spendings} = summary
       assert spendings == [
-        %{"category" => "travel", "amount" => 20.00},
-        %{"category" => "other", "amount" => 10.00}
+        %{"category" => "travel", "amount" => "20.00"},
+        %{"category" => "other", "amount" => "10.00"}
       ]
     end
   end

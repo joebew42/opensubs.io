@@ -4,9 +4,9 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 
 ## DOING
 
-- As a user when I go the the All Payments page I want to see a summary of all my expenses for each category
-  - How the `amount` field is handled (it is expressed in cents or other?)
-  - Extract the logic to generate the spendings summary from `subscription_controller` to `[generate|view]_spendings_summary` use case
+- As a user when I go the the All Payments page I want to see a summary of all my expenses grouped by category
+  - Extract the logic to generate the spendings summary from `subscription_controller` to `view_spendings_summary` use case
+  - How the `amount` field is handled (it is expressed in cents or other?)?
 
 HTTP GET /api/subscriptions/summary
 
@@ -14,17 +14,21 @@ HTTP GET /api/subscriptions/summary
   data: {
     currency: "EUR",
     currency_symbol: "€",
+    total: "7878.99"
     spendings: [
-      {category: "travel", amount: 239.99},
-      {category: "videogames", amount: 999.99},
-      {category: "other", amount: 9.99},
-      {category: "uncategorized", amount: 1900.00},
+      {category: "travel", amount: "239.99"},
+      {category: "videogames", amount: "999.99"},
+      {category: "other", amount: "9.99"},
+      {category: "uncategorized", amount: "1900.00"},
     ]
   }
 }
 
 ## TODO
 
+- The `subs_web` application tests are quite slow, is there some way to make them faster?
+  - Try to run `System.cmd("sh", ["priv/build_frontend.sh"])` in the `subs_web/test_helper.exs` only when we have to run the acceptance test
+- Create the [PieChart with ReactJS](http://www.reactd3.org/) or [other alternative](http://recharts.org/#/en-US)
 - Error: `SubsServices.get_services/0` is undefined
 - Why we run an empty seed `apps/repository/priv/repo/seeds.exs` when we execute the `mix ecto.setup` task?
 - during the `mix deps.get` we get a `quantum 2.2.1 RETIRED! (invalid) Problem with Daylight Saving Time`
@@ -54,10 +58,10 @@ warning: trailing commas are not allowed inside function/macro call arguments
 - create a seed data with an initial login user so that we can be able to authenticate to the application
 
 
-## QUESTIONS
+## QUESTIONS OR SUGGESTION
 
-- The `subs_web` tests are quite slow, is there some way to make them faster?
-  - Maybe the `frontend` could be moved out from the application `subs_web`?
+- May the `Money.to_human` helper function should return the Float value instead of a String?
+- Maybe the `frontend` could be moved out from the application `subs_web`?
 - It seems that is difficult to run tests of a single application. For example, when I try to run only the tests for the `subs` application, I get this error:
 
 ```
