@@ -52,12 +52,19 @@ const Subscriptions = ({
           </div>
         </div>
       </div>
-      <div className="br2 bg-white mt4 ba ph4 pv4 b--moon-gray">
-        {
-          subscriptions.size === 0
-            ? <NoSubscriptions />
-            : <SubscriptionsList subscriptions={subscriptions} />
-        }
+      <div className="flex ph2">
+        <div className="flex-column flex-auto">
+          <div className="br2 bg-white mt4 ba ph4 pv4 b--moon-gray">
+            {
+              subscriptions.size === 0
+                ? <NoSubscriptions />
+                : <SubscriptionsList subscriptions={subscriptions} />
+            }
+          </div>
+        </div>
+        <div className="flex-column ml12">
+            Spendings
+        </div>
       </div>
     </div>
   )

@@ -6,14 +6,15 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 
 - As a user when I go the the All Payments page I want to see a summary of all my expenses grouped by category
  - Consume the API from the frontend and show the spendings summary
+   - [BassCss Documentation](http://basscss.com/v7/docs/flex-object/)
 
 ## TODO
 
+- Add some data through the seed (e.g. some subscriptions)
 - The `subs_web` application tests are quite slow, is there some way to make them faster?
   - Try to run `System.cmd("sh", ["priv/build_frontend.sh"])` in the `subs_web/test_helper.exs` only when we have to run the acceptance test
 - Create the [PieChart with ReactJS](http://www.reactd3.org/) or [other alternative](http://recharts.org/#/en-US)
 - Error: `SubsServices.get_services/0` is undefined
-- Why we run an empty seed `apps/repository/priv/repo/seeds.exs` when we execute the `mix ecto.setup` task?
 - during the `mix deps.get` we get a `quantum 2.2.1 RETIRED! (invalid) Problem with Daylight Saving Time`
 - Fix warnings:
 warning: variable "status" is unused
