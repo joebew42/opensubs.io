@@ -5,24 +5,7 @@ Try to work on the [Categorization feature](https://github.com/joaquimadraz/open
 ## DOING
 
 - As a user when I go the the All Payments page I want to see a summary of all my expenses grouped by category
-  - Extract the logic to generate the spendings summary from `subscription_controller` to `view_spendings_summary` use case
-  - How the `amount` field is handled (it is expressed in cents or other?)?
-
-HTTP GET /api/subscriptions/summary
-
-{
-  data: {
-    currency: "EUR",
-    currency_symbol: "€",
-    total: "7878.99"
-    spendings: [
-      {category: "travel", amount: "239.99"},
-      {category: "videogames", amount: "999.99"},
-      {category: "other", amount: "9.99"},
-      {category: "uncategorized", amount: "1900.00"},
-    ]
-  }
-}
+ - Consume the API from the frontend and show the spendings summary
 
 ## TODO
 
@@ -47,6 +30,23 @@ warning: trailing commas are not allowed inside function/macro call arguments
   test/use_cases/users/reset_password_test.exs:70
 
 ## DONE
+
+- Extract the logic to generate the spendings summary from `subscription_controller` to `view_spendings_summary` use case
+- Expose an http API to show the spendings summary of the user `HTTP GET /api/subscriptions/summary`
+
+{
+  data: {
+    currency: "EUR",
+    currency_symbol: "€",
+    total: "7878.99"
+    spendings: [
+      {category: "travel", amount: "239.99"},
+      {category: "videogames", amount: "999.99"},
+      {category: "other", amount: "9.99"},
+      {category: "uncategorized", amount: "1900.00"},
+    ]
+  }
+}
 
 - `Other` should be the default value of category for all the new payments.
 - All the payments - prior to the release of this feature - will be migrated to a `Uncategorized`category (we translate this by adding the value uncategorized in the category field?).

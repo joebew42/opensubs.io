@@ -86,6 +86,24 @@ defmodule SubsWeb.Api.SubscriptionView do
     }
   end
 
+  def render("spendings_summary.json", %{summary: summary}) do
+    %{
+      data: %{
+        currency: summary.currency,
+        currency_symbol: summary.currency_symbol,
+        total: amount_to_human(summary.total),
+        spendings: render_many(summary.spendings, SubscriptionView, "spending_summary.json"),
+      }
+    }
+  end
+
+  def render("spending_summary.json", %{subscription: subscription}) do
+    %{
+      category: subscription.category,
+      amount: amount_to_human(subscription.amount)
+    }
+  end
+
   defp amount_to_human(amount), do: Money.to_human(amount)
 
   defp naive_to_utc_iso8601(date) do

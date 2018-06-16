@@ -95,12 +95,13 @@ defmodule SubsWeb.Api.SubscriptionController do
   end
 
   def summary(conn, _) do
-    current_user = UserHelper.current_user(conn)
-
-    summary = ViewSpendingsSummary.perform(current_user)
+    summary =
+      conn
+      |> UserHelper.current_user
+      |> ViewSpendingsSummary.perform
 
     conn
     |> put_status(:ok)
-    |> json(summary)
+    |> render("spendings_summary.json", summary: summary)
   end
 end
