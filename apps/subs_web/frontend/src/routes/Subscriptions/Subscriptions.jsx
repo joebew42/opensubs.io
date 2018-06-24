@@ -62,8 +62,10 @@ const Subscriptions = ({
             }
           </div>
         </div>
-        <div className="flex-column ml12">
-            Spendings
+        <div className="flex-column" style={{ width: '250pt' }}>
+          <div className="br2 bg-white ml2 mt4 ba ph2 pv4 b--moon-gray">
+            <h3 className="f4 ma0 ttu mt1 subs-blue-darker">Spendings</h3>
+          </div>
         </div>
       </div>
     </div>

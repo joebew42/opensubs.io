@@ -6,6 +6,7 @@ import { Map, OrderedSet } from 'immutable'
 import CurrentUser from 'data/domain/currentUser/CurrentUser'
 import RemoteCall from 'data/domain/RemoteCall'
 import getAllSubscriptionsAction, { GET_ALL_SUBSCRIPTIONS } from 'data/domain/subscriptions/getAllSubscriptions/action'
+import getSubscriptionsSummaryAction, { GET_SUBSCRIPTIONS_SUMMARY } from 'data/domain/subscriptions/getSubscriptionsSummary/action'
 import Subscriptions from './Subscriptions'
 
 class SubscriptionsContainer extends Component {
